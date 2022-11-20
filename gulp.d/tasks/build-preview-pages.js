@@ -28,7 +28,7 @@ module.exports =
           const extensions = ((baseUiModel.asciidoc || {}).extensions || []).map((request) => {
             ASCIIDOC_ATTRIBUTES[request.replace(/^@|\.js$/, '').replace(/[/]/g, '-') + '-loaded'] = ''
             const extension = require(request)
-            extension.register()
+            extension.register.call(Asciidoctor.Extensions)
             return extension
           })
           const siteAsciiDocConfig = { extensions }

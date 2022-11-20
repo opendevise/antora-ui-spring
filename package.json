@@ -21,6 +21,7 @@
     "@asciidoctor/tabs": "1.0.0-alpha.6",
     "@fontsource/roboto": "~4.5",
     "@fontsource/roboto-mono": "~4.5",
+    "@opendevise/spring-asciidoctor-extensions": "file:/home/dallen/projects/opendevise/spring-asciidoctor-extensions",
     "autoprefixer": "~10.4",
     "browser-pack-flat": "~3.5",
     "browserify": "~17.0",

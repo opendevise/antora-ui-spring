@@ -50,7 +50,106 @@ This is an example paragraph.
 [example]
 This is an example paragraph.
 
-=== Tabs.js
+=== Code Folding
+
+[,java]
+----
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class MyApplication {
+    public static void main(String[] args) {
+        // @fold:on // your logic here...
+        SpringApplication.run(MyApplication.class, args);
+        // @fold:off
+    }
+}
+----
+
+[,java]
+----
+import java.net.InetAddress;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import org.springframework.boot.context.properties.ConfigurationProperties;
+
+@ConfigurationProperties("my.service")
+public class MyProperties {
+    private boolean enabled;
+
+    private InetAddress remoteAddress;
+
+    private final Security security = new Security();
+
+    // @fold:on // getters / setters...
+    public boolean isEnabled() {
+        return this.enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public InetAddress getRemoteAddress() {
+        return this.remoteAddress;
+    }
+
+    public void setRemoteAddress(InetAddress remoteAddress) {
+        this.remoteAddress = remoteAddress;
+    }
+
+    public Security getSecurity() {
+        return this.security;
+    }
+    // @fold:off
+
+    public static class Security {
+        private String username;
+
+        private String password;
+
+        private List<String> roles = new ArrayList<>(Collections.singleton("USER"));
+
+        // @fold:on // getters / setters...
+        public String getUsername() {
+            return this.username;
+        }
+
+        public void setUsername(String username) {
+            this.username = username;
+        }
+
+        public String getPassword() {
+            return this.password;
+        }
+
+        public void setPassword(String password) {
+            this.password = password;
+        }
+
+        public List<String> getRoles() {
+            return this.roles;
+        }
+
+        public void setRoles(List<String> roles) {
+            this.roles = roles;
+        }
+        // @fold:off
+    }
+}
+----
+
+[,java]
+----
+// @fold:on // reveal answer
+System.out.println("The Answer!");
+// @fold:off
+----
+
+=== Tabs
 
 You can have code in different tabs
 

@@ -118,45 +118,31 @@ div.codetools button.clicked span.copied {
   opacity: 1;
 }
 
-span.fold-block {
+pre code span.fold-block {
   position: relative;
   float: left;
   clear: left;
-  padding-right: 0.75rem;
   overflow: hidden;
-}
-
-code.unfolded span.fold-block.hide-when-folded,
-code:not(.unfolded) span.fold-block.hide-when-unfolded {
-  max-height: 99999px;
   opacity: 1;
 }
 
-code.unfolded span.fold-block.hide-when-unfolded,
-code:not(.unfolded) span.fold-block.hide-when-folded {
-  max-height: none;
-  opacity: 0;
+pre code.unfolded span.hide-when-unfolded,
+pre code:not(.unfolded) span.hide-when-folded {
+  transition: max-height 500ms ease, opacity 500ms ease;
 }
 
-code.unfolding span.fold-block.hide-when-folded {
-  max-height: 600px;
-  opacity: 1;
+pre code:not(.unfolded) span.hide-when-unfolded,
+pre code.unfolded span.hide-when-folded {
+  transition: max-height 500ms ease, opacity 250ms linear 250ms;
 }
 
-code.folding span.fold-block.hide-when-unfolded {
-  max-height: 400px;
-  opacity: 1;
-}
-
-code.unfolding span.fold-block.hide-when-unfolded,
-code.folding span.fold-block.hide-when-folded {
+pre code:not(.unfolded) span.hide-when-folded,
+pre code.unfolded span.hide-when-unfolded {
   max-height: 0;
   opacity: 0;
 }
 
-code.unfolding span.fold-block.hide-when-folded,
-code.unfolding span.fold-block.hide-when-unfolded,
-code.folding span.fold-block.hide-when-unfolded,
-code.folding span.fold-block.hide-when-folded {
-  transition: max-height 200ms cubic-bezier(0, 1, 0, 1), opacity 200ms linear;
+pre code .scratch-block span.fold-block {
+  max-height: none !important;
+  transition: none !important;
 }

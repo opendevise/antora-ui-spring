@@ -577,15 +577,34 @@ h1.page + aside.toc.embedded {
   position: relative;
 }
 
-.doc .source-toolbox {
-  display: flex;
-  position: absolute;
-  top: 0.25rem;
-  right: 0.5rem;
+.doc pre.highlight code[data-lang]::before {
   color: var(--pre-annotation-font-color);
-  font-family: var(--body-font-family);
-  font-size: calc(13.5 / var(--rem-base) * 1rem);
+  content: attr(data-lang);
+  display: block;
+  font-size: 0.75em;
   line-height: 1;
+  position: absolute;
+  right: 0.5rem;
+  top: 0.25rem;
+  text-transform: uppercase;
+}
+
+.doc .source-toolbox {
+  background-color: var(--body-background-color);
+  border: 1px solid var(--pre-annotation-font-color);
+  border-radius: 2px;
+  bottom: 0.5rem;
+  display: flex;
+  font-family: var(--font-family);
+  line-height: 1;
+  opacity: 0;
+  position: absolute;
+  right: 0.5rem;
+  transition: opacity .15s ease-in-out;
+}
+
+.doc pre.highlight:hover .source-toolbox {
+  opacity: 1;
 }
 
 .doc .source-toolbox .source-lang {
@@ -595,13 +614,11 @@ h1.page + aside.toc.embedded {
   line-height: 1.0425;
 }
 
-.doc .source-toolbox > :not(:last-child)::after {
-  content: "|";
-  letter-spacing: 0;
-  padding: 0 1ch;
+.doc .source-toolbox > :not(:last-child) {
+  border-right: 1px solid var(--pre-annotation-font-color);
 }
 
-.doc .source-toolbox .copy-button {
+.doc .source-toolbox button {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -612,22 +629,27 @@ h1.page + aside.toc.embedded {
   padding: 0;
   font-size: inherit;
   line-height: inherit;
-  width: 1em;
-  height: 1em;
+  width: 24px;
+  height: 24px;
 }
 
-.doc .source-toolbox .copy-icon {
+.doc .source-toolbox img {
   flex: none;
-  width: inherit;
-  height: inherit;
+  width: 16px;
+  height: auto;
+  margin-top: 4px;
 }
 
-.doc .source-toolbox img.copy-icon {
-  filter: invert(50.2%);
+.doc code:not(.unfolded) + .source-toolbox .fold-icon {
+  display: none;
 }
 
-.doc .source-toolbox svg.copy-icon {
-  fill: currentColor;
+.doc code.unfolded + .source-toolbox .unfold-icon {
+  display: none;
+}
+
+.dark-theme .doc .source-toolbox img {
+  filter: invert(100%);
 }
 
 .dark-theme .doc .source-toolbox .copy-toast {

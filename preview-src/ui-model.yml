@@ -3,6 +3,7 @@ antoraVersion: '3.0.0'
 asciidoc:
   extensions:
   - '@asciidoctor/tabs'
+  - '@opendevise/spring-asciidoctor-extensions/code-folding-extension'
 site:
   url: http://localhost:5252
   title: Spring
